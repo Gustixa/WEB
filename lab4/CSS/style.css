@@ -1,0 +1,328 @@
+@import url('https://fonts.googleapis.com/css?family=Varela%20Round');
+*,
+*::before,
+*::after{
+    padding: 0;
+    background-color: rgb(5, 5, 90);
+    box-sizing: border-box;
+}
+
+:root{
+    --border: 4px solid;
+}
+
+.planet{
+    width: 500px;
+    height: 500px;
+    margin-top: 130px;
+    margin-left: 535px;
+}
+.water{
+    height: 440px;
+    width: 440px;
+    background-color: rgb(32, 132, 214);
+    border-radius: 50%;
+    box-shadow: 25 0 rgb(0,0,0, 0.1);
+    overflow:hidden;
+}
+
+.earth{
+    background-color: rgb(2, 177, 2);
+    border-radius: 50px;
+}
+
+.earth1{
+    margin-top: -10px;
+    margin-left: 275px;
+    height: 50px;
+    width: 150px;
+}
+.earth2{
+    margin-top: 20px;
+    margin-left: 10px;
+    height: 55px;
+    width: 160px;
+}
+
+.earth3{
+    margin-top: 20px;
+    margin-left: 30px;
+    height: 45px;
+    width: 90px;
+}
+
+.earth4{
+    margin-top: 20px;
+    margin-left: -20px;
+    width:90px;
+    height: 35px;
+}
+
+.earth5{
+    margin-top: 45px;
+    margin-left: 80px;
+    width: 160px;
+    height: 75px;
+}
+
+.earth6{
+    margin-top: 15px;
+    margin-left: 20px;
+    height: 45px;
+    width: 235px;
+}
+
+.earth7{
+    margin-top: -330px;
+    margin-left: 250px;
+    width: 90px;
+    height: 40px;
+}
+
+.earth8{
+    margin-top: 40px;
+    margin-left: 280px;
+    width: 200px;
+    height: 80px;
+}
+
+.earth9{
+    margin-top: 30px;
+    margin-left: 350px;
+    width: 110px;
+    height: 55px;
+}
+
+.planet::after{
+    width: 500px;
+    height: 500px;
+    margin-top: 400px;
+    margin-left: 400px;
+    background-color: rgba(255, 255, 255, 0.12);
+}
+
+.sky{
+    background-color: white;
+    border-radius: 50px;
+}
+
+.sky1{
+    height: 20px;
+    width: 50px;
+    margin-top: -300px;
+    margin-left: 200px;
+}
+.sky2{
+    height: 30px;
+    width: 90px;
+    margin-top: 23px;
+    margin-left: 60px;
+}
+
+.sky3{
+    height: 20px;
+    width: 40px;
+    margin-top: 10px;
+    margin-left: 240px;
+}
+
+.sky4{
+    height: 35px;
+    width: 78px;
+    margin-top: 40px;
+    margin-left: 170px;
+}
+
+.sky5{
+    height: 20px;
+    width: 85px;
+    margin-top: 15px;
+    margin-left: 45px;
+}
+
+.sky6{
+    height: 30px;
+    width: 130px;
+    margin-top: 15px;
+    margin-left: 70px;
+}
+
+.sky7{
+    height: 50px;
+    width: 90px;
+    margin-top: 20px;
+    margin-left: 130px;
+}
+
+.sky8{
+    height: 30px;
+    width: 50px;
+    margin-top: -300px;
+    margin-left: 370px;
+}
+
+.sky9{
+    height: 12px;
+    width: 40px;
+    margin-top: 5px;
+    margin-left: 335px;
+}
+
+.sky10{
+    height: 30px;
+    width: 120px;
+    margin-top:10px;
+    margin-left: 330px;
+}
+
+.sky11{
+    height: 30px;
+    width: 70px;
+    margin-top: 170px;
+    margin-left: 325px;
+}
+
+.sky12{
+    height: 20px;
+    width: 45px;
+    margin-top:20px;
+    margin-left: 300px;
+}
+
+.fill{
+    border-radius: 50px;
+}
+
+.block{
+    background-color: white;
+}
+
+.block1{
+    width: 20px;
+    height: 20px;
+    margin-top: -285px;
+    margin-left: 345px;
+}
+
+.block2{
+    width: 30px;
+    height: 20px;
+    margin-top: 120px;
+    margin-left: 85px;
+}
+
+.block3{
+    width: 30px;
+    height: 30px;
+    margin-top: 25px;
+    margin-left: 155px;
+}
+
+.block4{
+    background-color: rgb(2, 177, 2) ;
+    width: 30px;
+    height: 30px;
+    margin-top: -200px;
+    margin-left: 60px;
+}
+
+.block5{
+    background-color: rgb(2, 177, 2) ;
+    width: 30px;
+    height: 20px;
+    margin-top: 213px;
+    margin-left: 160px; 
+}
+
+.fill{
+    background-color:rgb(32, 132, 214);
+    border-radius: 50px;
+}
+
+.fill1{
+    height: 22px;
+    width: 40px;
+    margin-top: -264px;
+    margin-left: 25px;
+}
+
+.fill2{
+    height: 22px;
+    width: 40px;
+    margin-top: -22px;
+    margin-left: 85px;
+}
+
+.fill3{
+    height: 10px;
+    width: 15px;
+    margin-top: -31px;
+    margin-left: 338px;
+}
+
+.fill4{
+    height: 10px;
+    width: 15px;
+    margin-top: -10px;
+    margin-left: 362px;
+}
+
+.fill5{
+    height: 17px;
+    width: 35px;
+    margin-top: 128px;
+    margin-left: 62px;
+}
+
+.fill6{
+    height: 16px;
+    width: 35px;
+    margin-top: -17.8px;
+    margin-left: 110px;
+}
+
+.fill7{
+    background-color: rgb(2, 177, 2) ;
+    height: 20px;
+    width: 55px;
+    margin-top: 30px;
+    margin-left: 110px;
+}
+
+.fill8{
+    background-color: rgb(2, 177, 2) ;
+    height: 23px;
+    width: 40px;
+    margin-top: -22px;
+    margin-left: 180px;
+}
+
+.fill9{
+    height: 12px;
+    width: 40px;
+    margin-top: 49px;
+    margin-left: 130px;
+}
+
+.fill10{
+    height: 12px;
+    width: 40px;
+    margin-top: -12px;
+    margin-left: 180px;
+}
+
+h1{
+    margin-top: -30px;
+    font-family: 'Varela Round';
+    text-align: center;
+    color: white;
+    font-size: 50px;
+}
+
+h2{
+    font-family: 'Varela Round';
+    margin-top: -20px;
+    color: white;
+    text-align: center;
+}
+
