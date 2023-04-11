@@ -1,39 +1,65 @@
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './App.css'
-import SingleCard from './components/SingleCard'
+import SingleCard from './components/SingleCard.jsx'
+import './Firebase/fb'
+import {
+  getFirestore, collection, getDocs,
+} from 'firebase/firestore'
+
 
 const cardImages  = [
-  {"src":"/img/helmet-1.png", matched:false},
-  {"src":"/img/potion-1.png", matched:false},
-  {"src":"/img/ring-1.png", matched:false},
-  {"src":"/img/scroll-1.png", matched:false},
-  {"src":"/img/shield-1.png", matched:false},
-  {"src":"/img/sword-1.png", matched:false},
-  {"src":"/img/codeCombat-1.jpg", matched:false},
-  {"src":"/img/codeCombat-2.jpg", matched:false},
-  {"src":"/img/socialCC.jpg", matched:false},
+  {"src":"./public/img/thor.jpg", matched:false},
+  {"src":"./public/img/kgr.jpg", matched:false},
+  {"src":"./public/img/heroes-rush.jpg", matched:false},
+  {"src":"./public/img/aniversary.jpg", matched:false},
+  {"src":"./public/img/alien.jpg", matched:false},
+  {"src":"./public/img/magic.jpg", matched:false},
+  {"src":"./public/img/codeCombat-1.jpg", matched:false},
+  {"src":"./public/img/codeCombat-2.jpg", matched:false},
+  {"src":"./public/img/socialCC.jpg", matched:false},
+  {"src":"./public/img/tenShi.jpg", matched:false},
+  {"src":"./public/img/enano.jpg", matched:false},
+  {"src":"./public/img/ice.jpg", matched:false},
+  {"src":"./public/img/king.jpg", matched:false},
+  {"src":"./public/img/rock.jpg", matched:false},
+  {"src":"./public/img/king2.jpg", matched:false},
+  {"src":"./public/img/darkSoldier.jpg", matched:false},
+  {"src":"./public/img/fenix.jpg", matched:false},
+  {"src":"./public/img/gerald.jpg", matched:false},
 ]
 
 const App = () => {
-  const [cards, setCards] = useState([])
+  const[backGround, setBackGround] = useState([])
+  var [cards, setCards] = useState([])
+
   const [turns, setTurns] = useState(0)
   const [choiceOne, setChoiceOne] = useState(null)
   const [choiceTwo, setChoiceTwo] = useState(null)
   const [disabled, setDisabled] = useState(false)
-
+  /*
+  useEffect(() => {
+    const queryDB = getFirestore()
+    const queryCollection = collection(queryDB, 'cards')
+    getDocs(queryCollection) // trayendo el doc
+      .then((res) => setCards(res.docs.map((image) => ({ id: image.id, ...image.data()}))))
+  }, [])
+  
+  // Cambiando el id de las imagenes
+  for(let i = 0; i < cards.length; i++){
+    cards[i]['id'] = Math.random()
+  }
+  */
   // Revolviendo cartas
   const shuffleCards = () => {
-    const shuffledCards = [...cardImages,...cardImages]
+    const shuffledCards = [...cardImages, ...cardImages]
       .sort(() => Math.random() - 0.5)
-      .map((card) => ({...card, id: Math.random()}))
-    
-    
+      .map((card) => ({id: Math.random(),...card }))
     setChoiceOne(null)
     setChoiceTwo(null)
     setCards(shuffledCards)
     setTurns(0)
   }
-
+  console.log(cards)
   // Obtener seleccion
   const handleChoice = (card) =>{
     choiceOne ? setChoiceTwo(card) : setChoiceOne(card)
