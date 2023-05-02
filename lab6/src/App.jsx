@@ -26,6 +26,13 @@ const cardImages  = [
   {"src":"./public/img/darkSoldier.jpg", matched:false},
   {"src":"./public/img/fenix.jpg", matched:false},
   {"src":"./public/img/gerald.jpg", matched:false},
+  {"src":"./public/img/frontiersAPK.jpg", matched:false},
+  {"src":"./public/img/frontiersAPK2.jpg", matched:false},
+  {"src":"./public/img/originsAPK.jpg", matched:false},
+  {"src":"./public/img/hacksaw.jpg", matched:false},
+  {"src":"./public/img/panda.jpg", matched:false},
+  {"src":"./public/img/dante.jpg", matched:false}
+  
 ]
 
 const App = () => {
