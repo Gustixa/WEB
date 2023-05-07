@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Stack, TextField, Button } from '@mui/material'
 import './LogIn.css'
 import GoogleIcon from '@mui/icons-material/Google';
+import {useAuth} from '@authentication/AuthContext'
 
 const hoverButtons = {
   '&:hover':{
@@ -23,7 +24,19 @@ const firstIcon = {
 }
 
 const LogIn = () => {
-
+  const auth = useAuth()
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  
+  const handleLogIn = (e) => {
+    e.preventDefault()
+    auth.logIn(email, password)
+  }
+  const handleGoogle = (e) => {
+    e.preventDefault()
+    auth.logInWithGoogle()
+  }
+  console.log(email, password, "Datos obtenidos")
   return (
     <div className="Box">
       <div className="logIn-container">
@@ -34,17 +47,24 @@ const LogIn = () => {
               id="email"
               type="email"
               variant="outlined"
-              label="Correo electronico"/>
+              label="Correo electronico"
+              onChange={
+                (e) => setEmail(e.target.value)
+                }/>
             <TextField
               id="password"
               type="password"
               variant="outlined"
               label="Contraseña"
-            />
+              onChange={
+                (e) => setPassword(e.target.value)
+              }/>
             <Button
+              size="medium"
               sx={hoverButtons}
               type="submit"
               variant="outlined"
+              onClick={(e) => handleLogIn(e)}
               >
               Iniciar Sesión
             </Button>
@@ -52,7 +72,8 @@ const LogIn = () => {
               sx={hoverButtons}
               startIcon={<GoogleIcon sx={firstIcon}/>}
               variant="outlined"
-            >
+              onClick={(e) => handleGoogle(e)}
+            > 
               Iniciar Sesión con Google
             </Button>
             <Button

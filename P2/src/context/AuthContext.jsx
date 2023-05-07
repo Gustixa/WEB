@@ -1,7 +1,13 @@
 import React from 'react'
 import {auth} from '../Firebase/fb'
 import { createContext, useContext } from 'react'
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, signOut } from 'firebase/auth'
+import { 
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithPopup, 
+  signOut
+ } from 'firebase/auth'
 
 export const authContext = createContext()
 
@@ -14,13 +20,13 @@ export const useAuth = () => {
 }
 
 export function AuthProvider ({children}) {
-  const register = async (email, password) =>{
+  const signUp = async (email, password) =>{
     const response = await createUserWithEmailAndPassword(auth, email, password)
-    console.log(response)
+    return response
   }
   const logIn = async (email, password) => {
     const response = await signInWithEmailAndPassword(auth, email, password)
-    console.log(response)
+    console.log("Resultado verificacion login" + response)
   }
   const logInWithGoogle = async () => {
     const responseGoogle = new GoogleAuthProvider()
@@ -31,9 +37,11 @@ export function AuthProvider ({children}) {
     console.log(response)
   }
   return <authContext.Provider value={{
-    register,
+    signUp,
     logIn,
     logInWithGoogle,
     logOut
   }}>{children}</authContext.Provider>
 }
+
+

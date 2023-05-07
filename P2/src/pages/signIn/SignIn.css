@@ -1,0 +1,39 @@
+.Box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    
+  }
+  
+  .tittle{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .register-container{
+    width: 400px;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 5px 7px 9px rgba(0, 0, 0, 0.3);
+  }
+  
+  .error-message{
+    display: flex;
+    position: relative;
+    color: black;
+    font-size: 100px;
+  }
+
+  .account-text{
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+  }
+
+  logIn.text{
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    text-decoration: none;
+  }

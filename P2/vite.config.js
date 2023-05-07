@@ -14,6 +14,22 @@ export default defineConfig({
       {
         find:'@pages',
         replacement: resolve(__dirname, './src/pages')
+      },
+      {
+        find:'@authentication',
+        replacement: resolve(__dirname, './src/context')
+      },
+      {
+        find:'@API',
+        replacement: resolve(__dirname, './src/data')
+      },
+      {
+        find: '@utils',
+        replacement: resolve(__dirname, './src/utils')
+      },
+      {
+        find: '@img',
+        replacement: resolve(__dirname, './src/img')
       }
     ]
   }

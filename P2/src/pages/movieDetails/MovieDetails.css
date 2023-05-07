@@ -1,0 +1,27 @@
+.detailsContainer{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.col{
+    max-width: 400px;
+    margin: 15px;
+    height: auto;
+    width: 80%;
+}
+
+.movieImage{
+    border-radius: 15px;
+}
+
+.movieDetails{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.5rem;
+    color: white;
+}
+
+.title{
+    margin-top: 0;
+    color: rgb(171, 157, 157);
+}

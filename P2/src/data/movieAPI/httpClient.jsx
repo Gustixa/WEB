@@ -1,4 +1,4 @@
-const API = "https://api.themoviedb.org/"
+const API = "https://api.themoviedb.org/3"
 
 export default function get( path){
   return fetch(API + path,{

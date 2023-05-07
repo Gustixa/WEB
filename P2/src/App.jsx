@@ -1,7 +1,6 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
+import React, { useState } from 'react'
 import './App.css'
-import { AuthProvider } from './context/authContext'
+import { AuthProvider } from './context/AuthContext'
 import Routing from './routers/Routing'
 
 function App() {
