@@ -66,10 +66,11 @@ export default function SignIn() {
   const handleGoogle = async (e) => {
     e.preventDefault()
     try {
-      auth.logInWithGoogle()
+      await auth.logInWithGoogle()
       navigate("/")
+      
     } catch (error) {
-      setError(error.message)
+      return
     }
   }
   return (

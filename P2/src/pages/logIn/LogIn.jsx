@@ -52,10 +52,15 @@ const LogIn = () => {
       setPasswordValidation(true)
     }
   }
-  const handleGoogle = (e) => {
+  const handleGoogle = async (e) => {
     e.preventDefault()
-    auth.logInWithGoogle()
-    navigate("/")
+    try{
+      await auth.logInWithGoogle()
+      navigate("/")    
+    }catch (error) {
+      return
+    }
+    
   }
   return (
     <div className="Box">
@@ -104,9 +109,16 @@ const LogIn = () => {
               type="submit"
               variant="text"
               >
-              ¿No tiene cuenta? ¡Cree una!
+              
             </Button>
           </Stack>
+          <p>
+            ¿No tiene cuenta? ¡Cree una!
+            <Link to="/signIn" className="logIn-text">
+              Aquí
+            </Link>
+          </p>
+          
         </form>
       </div>
     </div>

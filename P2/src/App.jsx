@@ -1,14 +1,12 @@
-import React, { useState } from 'react'
+import React from 'react'
 import './App.css'
 import { AuthProvider } from './context/AuthContext'
 import Routing from './routers/Routing'
 
 function App() {
-  const [usuario, setUsuario] = useState(null)
-
   return (
     <AuthProvider>
-      <Routing></Routing>
+      <Routing />
     </AuthProvider>
   )
 }
