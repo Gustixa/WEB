@@ -1,13 +1,15 @@
-import React from 'react'
-import {auth} from '../Firebase/fb'
+import React, { useEffect } from 'react'
+import { auth } from '../Firebase/fb'
 import { createContext, useContext } from 'react'
 import { 
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   GoogleAuthProvider,
   signInWithPopup, 
-  signOut
+  signOut,
+  onAuthStateChanged
  } from 'firebase/auth'
+import { useState } from 'react'
 
 export const authContext = createContext()
 
@@ -20,27 +22,35 @@ export const useAuth = () => {
 }
 
 export function AuthProvider ({children}) {
-  const signUp = async (email, password) =>{
-    const response = await createUserWithEmailAndPassword(auth, email, password)
-    return response
+  const [user, setUser] = useState(null)
+
+  const signUp = (email, password) =>{
+    return createUserWithEmailAndPassword(auth, email, password)
   }
   const logIn = async (email, password) => {
-    const response = await signInWithEmailAndPassword(auth, email, password)
-    console.log("Resultado verificacion login" + response)
+    await signInWithEmailAndPassword(auth, email, password)
   }
   const logInWithGoogle = async () => {
     const responseGoogle = new GoogleAuthProvider()
     return signInWithPopup(auth, responseGoogle)
   }
-  const logOut = async () => {
-    const response = await signOut(auth)
-    console.log(response)
+  const logOut =  () => {
+    signOut(auth)
   }
+  
+  useEffect(() => {
+    onAuthStateChanged(auth, currentUser => {
+      setUser(currentUser)
+    })
+  }, [])
+
+  
   return <authContext.Provider value={{
     signUp,
     logIn,
     logInWithGoogle,
-    logOut
+    logOut,
+    user
   }}>{children}</authContext.Provider>
 }
 

@@ -3,6 +3,7 @@ import { Stack, TextField, Button } from '@mui/material'
 import './LogIn.css'
 import GoogleIcon from '@mui/icons-material/Google';
 import {useAuth} from '@authentication/AuthContext'
+import { Link, useNavigate } from 'react-router-dom'
 
 const hoverButtons = {
   '&:hover':{
@@ -27,16 +28,35 @@ const LogIn = () => {
   const auth = useAuth()
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
+
+  const [emailErrorMessage, setEmailErrorMessage] = useState("")
+  const [emailValidation, setEmailValidation] = useState(false)
   
-  const handleLogIn = (e) => {
+  const [passwordErrorMessage, setPasswordErrorMessage] = useState("")
+  const [passwordValidation, setPasswordValidation] = useState(false)
+
+  const navigate = useNavigate()
+
+  const handleLogIn = async (e) => {
     e.preventDefault()
-    auth.logIn(email, password)
+    
+    try {
+      await auth.logIn(email, password)  
+      navigate("/")
+    } catch (error) {
+      if(error.code === "auth/user-not-found"){
+        setEmailErrorMessage("Usuario no existente")
+        setEmailValidation(true)
+      }else if(error.code === "auth/wrong-password")
+      setPasswordErrorMessage("Contraseña incorrecta")
+      setPasswordValidation(true)
+    }
   }
   const handleGoogle = (e) => {
     e.preventDefault()
     auth.logInWithGoogle()
+    navigate("/")
   }
-  console.log(email, password, "Datos obtenidos")
   return (
     <div className="Box">
       <div className="logIn-container">
@@ -50,7 +70,9 @@ const LogIn = () => {
               label="Correo electronico"
               onChange={
                 (e) => setEmail(e.target.value)
-                }/>
+                }
+              error={emailValidation}
+              helperText={emailErrorMessage}/>
             <TextField
               id="password"
               type="password"
@@ -58,7 +80,9 @@ const LogIn = () => {
               label="Contraseña"
               onChange={
                 (e) => setPassword(e.target.value)
-              }/>
+              }
+              error={passwordValidation}
+              helperText={passwordErrorMessage}/>
             <Button
               size="medium"
               sx={hoverButtons}

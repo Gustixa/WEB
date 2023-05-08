@@ -4,7 +4,6 @@ import GoogleIcon from '@mui/icons-material/Google'
 import './SignIn.css'
 import {useAuth} from '@authentication/AuthContext'
 import { Link, useNavigate } from 'react-router-dom'
-import {useForm} from 'react-hook-form'
 
 const hoverButtons = {
   '&:hover':{
@@ -29,33 +28,42 @@ export default function SignIn() {
   const auth = useAuth()
   const [emailRegister, setEmailRegister] = useState("")
   const [passwordRegister, setPasswordRegister] = useState("")
-  const [error, setError] = useState()
-
-  const validatePassword = (password) =>{
-    return password.length >= 6
-  }
+  const [passwordError, setPasswordError] = useState("")
+  const [passwordValidation, setPasswordValidation] = useState(false)
+  const [emailError, setEmailError] = useState("")
+  const [emailValidation, setEmailValidation] = useState(false)
 
   const navigate = useNavigate()
   
   const validateEmail = (email) => {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return re.test(String(email).toLowerCase());
-  };
-  
-  const handleRegister = (e) => {
+  }
+
+  // Verifying if the user and password are validates when press the register button
+  const handleRegister = async (e) => {
     e.preventDefault()
-    setError("")
-    if(passwordRegister.length < 6 || !validateEmail(emailRegister)){
+    if(passwordRegister.length < 6){
+      setPasswordError("La contraseña debe poseer 6 caracteres")
+      setPasswordValidation(passwordRegister.length < 6)
       return
+    }else if(!validateEmail(emailRegister)){
+      setEmailError("Correo no valido")
+      setEmailValidation(true)
     }
+
     try {
-      auth.signUp(emailRegister, passwordRegister)
+      await auth.signUp(emailRegister, passwordRegister)
       navigate("/")
     } catch (error) {
-      setError(error.message)
+      if(error.code === "auth/email-already-in-use"){
+        setEmailError("Usuario (correo) ya utilizado")
+        setEmailValidation(true)
+      }
     }
+    
   }
-  const handleGoogle = (e) => {
+  const handleGoogle = async (e) => {
     e.preventDefault()
     try {
       auth.logInWithGoogle()
@@ -67,7 +75,7 @@ export default function SignIn() {
   return (
     <div className="Box">
       <div className="register-container">
-        <form>
+        <form>  
           <h1 className="tittle">Registrarse</h1>
           <Stack spacing={3} direction="column">
             <TextField
@@ -78,6 +86,8 @@ export default function SignIn() {
               onChange={
                 (e) => setEmailRegister(e.target.value)
                 }
+              error={emailValidation}
+              helperText={emailError}
               />
             <TextField
               id="password"
@@ -87,8 +97,8 @@ export default function SignIn() {
               onChange={
                 (e) => setPasswordRegister(e.target.value)
               }
-              error={!validatePassword}
-            helperText="La contraseña debe tener al menos 6 caracteres"
+              error={passwordValidation}
+              helperText={passwordError}
              
               />
             <Button
