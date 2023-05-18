@@ -7,7 +7,8 @@ import {
   GoogleAuthProvider,
   signInWithPopup, 
   signOut,
-  onAuthStateChanged
+  onAuthStateChanged,
+  signInWithRedirect
  } from 'firebase/auth'
 import { useState } from 'react'
 
@@ -32,6 +33,7 @@ export function AuthProvider ({children}) {
   }
   const logInWithGoogle = async () => {
     const responseGoogle = new GoogleAuthProvider()
+    //return signInWithRedirect(auth, responseGoogle)
     return signInWithPopup(auth, responseGoogle)
   }
   const logOut =  () => {

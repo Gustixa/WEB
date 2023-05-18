@@ -1,0 +1,19 @@
+.caja{
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+}
+.result{
+    border-radius: 15px;
+    text-align: right;
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    width: 290px;
+    height: 50px;
+    color: white;
+    margin: 15px;
+    background-color: rgb(100, 99, 99);
+    padding-right: 10px;
+    padding-top: 15px;
+}
+

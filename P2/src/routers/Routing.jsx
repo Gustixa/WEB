@@ -1,9 +1,8 @@
 import React from 'react'
 import {
-    BrowserRouter,
-    Routes,
-    Route,
-    Link
+  BrowserRouter,
+  Routes,
+  Route,
 } from 'react-router-dom'
 import Home from '@pages/home'
 import LogIn from '@pages/logIn'
@@ -15,20 +14,25 @@ export default function Routing() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route exact path="/" element={
-          <ProtectedRoute>
-            <Home/>
-          </ProtectedRoute>
-        }>
-        </Route>
-        <Route path="/logIn" element={<LogIn/>}></Route>
-        <Route path="/signIn" element={
-          <ProtectedRoute>
-            <SignIn/>
-          </ProtectedRoute>
-        }>
-        </Route>
-        <Route path="/movies/:movieId" element={<MovieDetails/>}></Route>
+        <Route
+          exact
+          path="/"
+          element={(
+            <ProtectedRoute>
+              <Home />
+            </ProtectedRoute>
+        )}
+        />
+        <Route path="/logIn" element={<LogIn />} />
+        <Route
+          path="/signIn"
+          element={(
+            <ProtectedRoute>
+              <SignIn />
+            </ProtectedRoute>
+        )}
+        />
+        <Route path="/movies/:movieId" element={<MovieDetails />} />
       </Routes>
     </BrowserRouter>
   )

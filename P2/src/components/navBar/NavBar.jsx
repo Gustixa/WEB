@@ -1,5 +1,6 @@
-import {AppBar, Toolbar, Button} from '@mui/material'
-import {useAuth} from '@authentication/AuthContext'
+import React from 'react'
+import { AppBar, Toolbar, Button } from '@mui/material'
+import { useAuth } from '@authentication/AuthContext'
 import styles from './NavBar.module.css'
 
 const buttonStyle = {
@@ -9,7 +10,7 @@ const buttonStyle = {
   color: 'black',
   borderRadius: '10px',
   position: 'absolute',
-  right:'0',
+  right: '0',
   '&:hover': {
     background: '#f0cb7a',
     border: '1px solid linear-gradient(180deg, #fbde74 0%, #ff9900 100%)',
@@ -17,19 +18,23 @@ const buttonStyle = {
   },
 }
 
-export default function NavBar () {
-  const { user, logOut } = useAuth() 
+export default function NavBar() {
+  const { user, logOut } = useAuth()
 
   const handleLogOut = async () => {
-    await logOut()    
+    await logOut()
   }
   return (
-    <AppBar style={{background:'black'}}>
+    <AppBar style={{ background: 'black' }}>
       <Toolbar>
-        <h1 className={styles.User}>Bienvenido {user.email}</h1>
+        <h1 className={styles.User}>
+          Bienvenido
+          {user.email}
+        </h1>
         <Button
           sx={buttonStyle}
-          onClick={handleLogOut}>
+          onClick={handleLogOut}
+        >
           LogOut
         </Button>
       </Toolbar>

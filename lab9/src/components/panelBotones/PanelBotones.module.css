@@ -1,0 +1,12 @@
+.cuadroTeclas{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.cuadroTeclas > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
